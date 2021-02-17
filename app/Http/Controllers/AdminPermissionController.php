@@ -51,7 +51,7 @@ class AdminPermissionController extends Controller
     			'key_code' => $request -> module_parent.'_'.$value
     		]);
     	}*/
-        dd($request -> all());
+        //dd($request -> all());
         if($request -> parent_id == 0)
         {
             $key_code = null;
@@ -62,7 +62,7 @@ class AdminPermissionController extends Controller
             
             $key_code =  $name['0'] -> name .'_'.$request -> name;   
         }
-
+        dd('test');
         $this -> permission -> create([
             'name' => $request -> name,
             'parent_id' => $request -> parent_id,
