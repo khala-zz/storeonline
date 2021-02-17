@@ -62,7 +62,7 @@ class AdminPermissionController extends Controller
             
             $key_code =  $name['0'] -> name .'_'.$request -> name;   
         }
-        dd('test');
+        
         $this -> permission -> create([
             'name' => $request -> name,
             'parent_id' => $request -> parent_id,
@@ -70,7 +70,7 @@ class AdminPermissionController extends Controller
             'key_code' => $key_code
            
         ]);
-
+        dd('testddddddddddddd');
     	return redirect() -> route('permission.index') -> with('success','Thêm permission thành công');
     }
 
