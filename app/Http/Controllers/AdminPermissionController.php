@@ -70,7 +70,7 @@ class AdminPermissionController extends Controller
             'key_code' => $key_code
            
         ]);
-        dd('testddddddddddddd');
+        
     	return redirect() -> route('permission.index') -> with('success','Thêm permission thành công');
     }
 
