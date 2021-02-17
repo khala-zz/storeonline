@@ -4,11 +4,11 @@
 	@endsection
 	@section('css')
 		
-		<link href="{{ asset('home/home.css') }}" rel="stylesheet">
+		<link href="//{{ asset('home/home.css') }}" rel="stylesheet">
 	@endsection
 
 	@section('js')
-		<script src=" {{ asset('home/home.js') }} "></script>
+		<script src="//{{ asset('home/home.js') }} "></script>
 	@endsection
 
 	@section('content')
