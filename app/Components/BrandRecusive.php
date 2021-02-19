@@ -9,8 +9,9 @@ class BrandRecusive{
 		$this -> html = '';
 	}
 	public function brandRecusiveAdd($parentId = 0,$subMark = ''){
+		dd('test');
 		$data = Brand::where('parent_id',$parentId) -> get();
-		dd($data);
+		
 		foreach($data as $dataItem){
 			$this ->html .= "<option value = '".$dataItem -> id."'>".$subMark.$dataItem -> name."</option>";
 			$this -> brandRecusiveAdd($dataItem -> id,$subMark. '--');
