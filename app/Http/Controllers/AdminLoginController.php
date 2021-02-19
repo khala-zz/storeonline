@@ -33,7 +33,7 @@ class AdminLoginController extends Controller
     // dăng xuất
     public function logoutAdmin(){
         Auth::logout();
-        Session::forget('frontSession');
+        
         return redirect('/admin/login');
     }
 }
