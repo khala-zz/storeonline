@@ -46,8 +46,9 @@ class AdminRoleController extends Controller
     	]);
         
     	//relationship in model 
+         dd(($request -> permission_id);
     	$role -> permissions() -> attach($request -> permission_id);
-        dd('test3');
+       
     	return redirect() -> route('role.index') -> with('success','Thêm role thành công');
     }
 
