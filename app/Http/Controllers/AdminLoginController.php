@@ -30,4 +30,10 @@ class AdminLoginController extends Controller
             return redirect() -> to('admin/brands'); 
     	}
     }
+    // dăng xuất
+    public function logoutAdmin(){
+        Auth::logout();
+        Session::forget('frontSession');
+        return redirect('/admin/login');
+    }
 }
