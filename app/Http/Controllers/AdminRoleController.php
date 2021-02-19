@@ -38,7 +38,7 @@ class AdminRoleController extends Controller
     public function store(Request $request)
     {
     	
-        dd($request -> permission_id);
+        
         $role = $this -> role -> create([
     		'name' => $request -> name,
     		'display_name' => $request -> display_name,
@@ -49,7 +49,7 @@ class AdminRoleController extends Controller
     	//relationship in model 
          
     	$role -> permissions() -> attach($request -> permission_id);
-       
+      
     	return redirect() -> route('role.index') -> with('success','Thêm role thành công');
     }
 
