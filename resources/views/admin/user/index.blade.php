@@ -96,7 +96,7 @@
                        {{ $users -> links() }}
                    </div> 
                     <div class="col-lg-4 ">
-                        <a href="{{ route('user.add') }}"  class="btn btn-info btn-rounded" >Thêm Sản phẩm</a>
+                        <a href="{{ route('user.add') }}"  class="btn btn-info btn-rounded" >Thêm User</a>
                    </div> 
                    
                    
