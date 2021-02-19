@@ -60,6 +60,7 @@ class AdminProductController extends Controller
         $data = $this -> brand -> all();
         $recusive = new BrandRecusive($data);
         $htmlOption = $recusive -> brandRecusiveAdd($parentId);
+	    dd('test3');
         return $htmlOption;
     }
       //edit brand  
