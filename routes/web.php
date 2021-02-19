@@ -42,6 +42,7 @@ Route::get('/admin', function () {
 });
 //trang login
 Route::get('/admin/login', [AdminLoginController::class, 'loginAdmin']);
+Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin']) -> name('user.adminLogout');
 Route::post('/admin/login', [AdminLoginController::class, 'postLoginAdmin']);
 
 //user register,login
