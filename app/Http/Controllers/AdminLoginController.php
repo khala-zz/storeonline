@@ -21,8 +21,9 @@ class AdminLoginController extends Controller
     public function postLoginAdmin(Request $request)
     {
     	
-    	$remember = $request -> has('remember_me') ? true : false;
-        dd('test2224444');
+    	 dd('test22244449999999');
+        $remember = $request -> has('remember_me') ? true : false;
+       
     	if(Auth::attempt(['email' => $request -> email,'password' => $request -> password],$remember))
     	{
     		dd('test222');
