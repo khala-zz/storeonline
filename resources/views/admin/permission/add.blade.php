@@ -20,7 +20,7 @@
 								@csrf
 								<div class="form-group">
 									<label> Tên Permission</label>
-									<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nhập tên menu" value="{{ old('name') }}">
+									<input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nhập tên permission" value="{{ old('name') }}">
 									@error('name')
 										<div class="alert alert-danger khala-alert">
 											{{ $message }}
