@@ -38,7 +38,7 @@ class AdminRoleController extends Controller
     public function store(Request $request)
     {
     	
-        dd(($request -> permission_id);
+        dd($request -> permission_id);
         $role = $this -> role -> create([
     		'name' => $request -> name,
     		'display_name' => $request -> display_name,
