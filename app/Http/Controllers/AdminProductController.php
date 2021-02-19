@@ -58,10 +58,10 @@ class AdminProductController extends Controller
     public function getBrandAdd($parentId){
 	    
         $data = $this -> brand -> all();
-	     dd($data);
+	     
         $recusive = new BrandRecusive($data);
         $htmlOption = $recusive -> brandRecusiveAdd($parentId);
-	   
+	   dd($htmlOption);
         return $htmlOption;
     }
       //edit brand  
