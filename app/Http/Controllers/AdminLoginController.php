@@ -24,7 +24,8 @@ class AdminLoginController extends Controller
     	$remember = $request -> has('remember_me') ? true : false;
     	if(Auth::attempt(['email' => $request -> email,'password' => $request -> password],$remember))
     	{
-    		return redirect() -> to('admin/brands'); 
+    		dd('test222');
+            return redirect() -> to('admin/brands'); 
     	}
     }
 }
