@@ -44,10 +44,10 @@ class AdminRoleController extends Controller
     		'description' => $request -> description,
     		'status' => $request -> status
     	]);
-        dd('test2');
+        
     	//relationship in model 
     	$role -> permissions() -> attach($request -> permission_id);
-
+        dd('test3');
     	return redirect() -> route('role.index') -> with('success','Thêm role thành công');
     }
 
