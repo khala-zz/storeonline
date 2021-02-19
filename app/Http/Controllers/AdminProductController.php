@@ -98,9 +98,9 @@ class AdminProductController extends Controller
     {
     	
 	$htmlOption = $this -> getCategory($parentId = '');
-	    dd('test2');
-        $htmlOptionBrand = $this -> getBrandAdd($parentId = '');
 	    
+        $htmlOptionBrand = $this -> getBrandAdd($parentId = '');
+	 dd('test3333');   
     	return view('admin.product.add',compact('htmlOption','htmlOptionBrand'));
     }
 
