@@ -56,7 +56,7 @@ class AdminProductController extends Controller
 
       //get toan bo brand
     public function getBrandAdd($parentId){
-	    dd('etst');
+	    
         $data = $this -> brand -> all();
         $recusive = new BrandRecusive($data);
         $htmlOption = $recusive -> brandRecusiveAdd($parentId);
