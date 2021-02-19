@@ -22,6 +22,7 @@ class AdminLoginController extends Controller
     {
     	
     	$remember = $request -> has('remember_me') ? true : false;
+        dd('test2224444');
     	if(Auth::attempt(['email' => $request -> email,'password' => $request -> password],$remember))
     	{
     		dd('test222');
