@@ -134,7 +134,8 @@ class AdminProductController extends Controller
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
 		       
-    		//them vao bang product
+    		dd($dataProductCreate);
+		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
 		  dd('testsssaaaaaaaaaaaaaaa'); 
     		//kiem tra co tags thi insert vao bang tags
