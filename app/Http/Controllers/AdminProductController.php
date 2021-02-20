@@ -109,7 +109,7 @@ class AdminProductController extends Controller
 
     public function store(Request $request)
     {
-    	dd('store');
+    	
 	    try
     	{
     		DB::beginTransaction();
@@ -126,6 +126,7 @@ class AdminProductController extends Controller
     			'status' => $request -> status
 
     		];
+		    dd('storessssss');
     		$dataFeatureImage = $this -> storageImageUpload($request,'feature_image_path','product');
     		if(!empty($dataFeatureImage))
     		{
