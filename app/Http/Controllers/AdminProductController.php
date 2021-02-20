@@ -133,7 +133,7 @@ class AdminProductController extends Controller
     			$dataProductCreate['feature_image_path'] = $dataFeatureImage['file_path'];
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
-		    dd('store image');
+		    
     		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
     		//kiem tra co tags thi insert vao bang tags
@@ -146,6 +146,7 @@ class AdminProductController extends Controller
 	              $tagIds[] = $tagInstance -> id;
 	          }
 	        }
+		    dd('store tag');
     		//trong Product model lam reletionship belongtomany function tags() de insert du lieu vao bang trung gian
     		$product -> tags() -> attach($tagIds);
 
