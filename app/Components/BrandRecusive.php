@@ -16,7 +16,7 @@ class BrandRecusive{
 			$this ->html .= "<option value = '".$dataItem -> id."'>".$subMark.$dataItem -> name."</option>";
 			$this -> brandRecusiveAdd($dataItem -> id,$subMark. '--');
 		}
-		dd('test4444444');
+		
 		return $this -> html;
 	}
 
