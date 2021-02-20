@@ -138,7 +138,7 @@ class AdminProductController extends Controller
     		$dataProductCreate['reviews_count'] = 0;    
     		
 		//them vao bang product
-    		//$product = $this -> product -> create($dataProductCreate);
+    		$product = $this -> product -> create($dataProductCreate);
 		  dd('testsssaaaaaaaaaaaaaaa'); 
 		    
     		//kiem tra co tags thi insert vao bang tags
