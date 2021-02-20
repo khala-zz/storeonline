@@ -133,7 +133,9 @@ class AdminProductController extends Controller
     			$dataProductCreate['feature_image_path'] = $dataFeatureImage['file_path'];
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
-		       
+		//set default cho 2 field avg_rating ,reviews_count 
+		$dataProductCreate['avg_rating'] = 0;
+    		$dataProductCreate['reviews_count'] = 0;    
     		
 		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
