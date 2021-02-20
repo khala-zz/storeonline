@@ -126,13 +126,14 @@ class AdminProductController extends Controller
     			'status' => $request -> status
 
     		];
-		    dd('storessssss');
+		    
     		$dataFeatureImage = $this -> storageImageUpload($request,'feature_image_path','product');
     		if(!empty($dataFeatureImage))
     		{
     			$dataProductCreate['feature_image_path'] = $dataFeatureImage['file_path'];
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
+		    dd('store image');
     		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
     		//kiem tra co tags thi insert vao bang tags
