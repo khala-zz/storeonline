@@ -121,9 +121,9 @@ class AdminProductController extends Controller
     			'description' => $request -> description,
     			'content' => $request -> content,
     			'user_id' => Auth::id(),
-    			'category_id' => $request -> category_id,
-                'brand_id' => $request -> brand_id,
-    			'status' => $request -> status
+    			'category_id' => (int)$request -> category_id,
+                'brand_id' => (int)$request -> brand_id,
+    			'status' => (int)$request -> status
 
     		];
 		    
@@ -134,11 +134,11 @@ class AdminProductController extends Controller
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
 		       
-    		
+    		dd($dataProductCreate);
 		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
 		  dd('testsssaaaaaaaaaaaaaaa'); 
-		    dd($dataProductCreate);
+		    
     		//kiem tra co tags thi insert vao bang tags
     		$tagIds = [];
     		if(!empty($request -> tags))
