@@ -109,7 +109,8 @@ class AdminProductController extends Controller
 
     public function store(Request $request)
     {
-    	try
+    	dd('store');
+	    try
     	{
     		DB::beginTransaction();
     		$dataProductCreate = [
