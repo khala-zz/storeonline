@@ -61,7 +61,7 @@ class AdminProductController extends Controller
 	  
         $recusive = new BrandRecusive($data);
         $htmlOption = $recusive -> brandRecusiveAdd($parentId);
-	   dd($htmlOption);
+	   
         return $htmlOption;
     }
       //edit brand  
@@ -103,7 +103,7 @@ class AdminProductController extends Controller
 	$htmlOption = $this -> getCategory($parentId = '');
 	    
         $htmlOptionBrand = $this -> getBrandAdd($parentId = 0);
-	 dd('test3333');   
+	 
     	return view('admin.product.add',compact('htmlOption','htmlOptionBrand'));
     }
 
