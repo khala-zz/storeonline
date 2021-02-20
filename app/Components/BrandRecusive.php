@@ -9,7 +9,7 @@ class BrandRecusive{
 		$this -> html = '';
 	}
 	public function brandRecusiveAdd($parentId = 0,$subMark = ''){
-		
+		dd('testdddddddddd');
 		$data = Brand::where('parent_id',$parentId) -> get();
 		dd($data);
 		foreach($data as $dataItem){
