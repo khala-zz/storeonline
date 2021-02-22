@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Đăng nhập</button>
-                                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Đăng kí</button>
+                                    
                                 </form>
                             </div>
                         </div>
