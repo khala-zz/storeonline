@@ -135,7 +135,11 @@ class AdminProductController extends Controller
     		}
 		//set default cho 2 field avg_rating ,reviews_count 
 		$dataProductCreate['avg_rating'] = 0.00;
-    		$dataProductCreate['reviews_count'] = 0;    
+    		$dataProductCreate['reviews_count'] = 0;
+		$dataProductCreate['views_count'] = 0;
+		$dataProductCreate['p_name'] = '';
+		$dataProductCreate['p_code'] = '';
+		$dataProductCreate['p_color'] = '';
     		
 		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
