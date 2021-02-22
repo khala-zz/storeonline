@@ -12,8 +12,7 @@ class AdminLoginController extends Controller
     {
     	if(Auth::check())
     	{
-    		
-            return redirect() -> to('admin/brands');
+    		return redirect() -> to('admin/brands');
     	}
     	return view('admin.login');
     }
