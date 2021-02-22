@@ -21,10 +21,19 @@ class AdminLoginController extends Controller
     public function postLoginAdmin(Request $request)
     {
     	
-    	$remember = $request -> has('remember_me') ? true : false;
+    	
+        $remember = $request -> has('remember_me') ? true : false;
+       
     	if(Auth::attempt(['email' => $request -> email,'password' => $request -> password],$remember))
     	{
-    		return redirect() -> to('admin/brands'); 
+    		
+            return redirect() -> to('admin/brands'); 
     	}
+    }
+    // dăng xuất
+    public function logoutAdmin(){
+        Auth::logout();
+        
+        return redirect('/admin/login');
     }
 }

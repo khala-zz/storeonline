@@ -56,9 +56,12 @@ class AdminProductController extends Controller
 
       //get toan bo brand
     public function getBrandAdd($parentId){
+	    
         $data = $this -> brand -> all();
+	  
         $recusive = new BrandRecusive($data);
         $htmlOption = $recusive -> brandRecusiveAdd($parentId);
+	   
         return $htmlOption;
     }
       //edit brand  
@@ -96,14 +99,18 @@ class AdminProductController extends Controller
 
     public function add()
     {
-    	$htmlOption = $this -> getCategory($parentId = '');
-        $htmlOptionBrand = $this -> getBrandAdd($parentId = '');
+    	
+	$htmlOption = $this -> getCategory($parentId = 0);
+	    
+        $htmlOptionBrand = $this -> getBrandAdd($parentId = 0);
+	 
     	return view('admin.product.add',compact('htmlOption','htmlOptionBrand'));
     }
 
     public function store(Request $request)
     {
-    	try
+    	
+	    try
     	{
     		DB::beginTransaction();
     		$dataProductCreate = [
@@ -114,19 +121,30 @@ class AdminProductController extends Controller
     			'description' => $request -> description,
     			'content' => $request -> content,
     			'user_id' => Auth::id(),
-    			'category_id' => $request -> category_id,
-                'brand_id' => $request -> brand_id,
-    			'status' => $request -> status
+    			'category_id' => (int)$request -> category_id,
+                'brand_id' => (int)$request -> brand_id,
+    			'status' => (int)$request -> status
 
     		];
+		    
     		$dataFeatureImage = $this -> storageImageUpload($request,'feature_image_path','product');
     		if(!empty($dataFeatureImage))
     		{
     			$dataProductCreate['feature_image_path'] = $dataFeatureImage['file_path'];
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
     		}
-    		//them vao bang product
+		//set default cho 2 field avg_rating ,reviews_count 
+		$dataProductCreate['avg_rating'] = 0.00;
+    		$dataProductCreate['reviews_count'] = 0;
+		$dataProductCreate['views_count'] = 0;
+		$dataProductCreate['p_name'] = '';
+		$dataProductCreate['p_code'] = '';
+		$dataProductCreate['p_color'] = '';
+    		
+		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
+		 
+		    
     		//kiem tra co tags thi insert vao bang tags
     		$tagIds = [];
     		if(!empty($request -> tags))
@@ -137,9 +155,10 @@ class AdminProductController extends Controller
 	              $tagIds[] = $tagInstance -> id;
 	          }
 	        }
+		   
     		//trong Product model lam reletionship belongtomany function tags() de insert du lieu vao bang trung gian
     		$product -> tags() -> attach($tagIds);
-
+			
     		//insert toan ven du lieu
     		DB::commit();
     		return redirect() -> route('product.index') -> with('success','Thêm sản phẩm thành công');

@@ -140,11 +140,11 @@
 								<div class="form-group">
 									<label >Trạng thái</label>
 									<div >
-										<input type="radio"  name="status"  value="0">
+										<input type="radio"  name="status"  value=0>
 										<label  >Ẩn</label>
 									</div>
 									<div >
-										<input type="radio"  name="status"  value="1">
+										<input type="radio"  name="status"  value=1>
 										<label >Hiện</label>
 									</div>
 									@error('status')

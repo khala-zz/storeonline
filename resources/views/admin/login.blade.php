@@ -51,7 +51,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon3"><i class="ti-lock"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Mật khẩu" aria-label="Password" aria-describedby="basic-addon3" name="password">
+                                            <input type="password" class="form-control" placeholder="Mật khẩu" aria-label="Password" aria-describedby="basic-addon3" name="password">
                                         </div>
                                     </div>
                                   

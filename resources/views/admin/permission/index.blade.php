@@ -87,7 +87,7 @@
                        {{ $permissions -> links() }}
                    </div> 
                     <div class="col-lg-4 ">
-                        <a href="{{ route('permission.add') }}"  class="btn btn-info btn-rounded" >Thêm danh mục sản phẩm</a>
+                        <a href="{{ route('permission.add') }}"  class="btn btn-info btn-rounded" >Thêm Permission</a>
                    </div> 
                    
                    

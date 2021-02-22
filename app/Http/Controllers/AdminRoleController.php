@@ -37,16 +37,19 @@ class AdminRoleController extends Controller
 
     public function store(Request $request)
     {
-    	$role = $this -> role -> create([
+    	
+        
+        $role = $this -> role -> create([
     		'name' => $request -> name,
     		'display_name' => $request -> display_name,
     		'description' => $request -> description,
     		'status' => $request -> status
     	]);
-
+        
     	//relationship in model 
+         
     	$role -> permissions() -> attach($request -> permission_id);
-
+      
     	return redirect() -> route('role.index') -> with('success','Thêm role thành công');
     }
 
