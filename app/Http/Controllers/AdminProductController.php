@@ -143,7 +143,7 @@ class AdminProductController extends Controller
     		
 		//them vao bang product
     		$product = $this -> product -> create($dataProductCreate);
-		  dd('testsssaaaaaaaaaaaaaaa'); 
+		 
 		    
     		//kiem tra co tags thi insert vao bang tags
     		$tagIds = [];
@@ -155,7 +155,7 @@ class AdminProductController extends Controller
 	              $tagIds[] = $tagInstance -> id;
 	          }
 	        }
-		  
+		   dd('tag'); 
     		//trong Product model lam reletionship belongtomany function tags() de insert du lieu vao bang trung gian
     		$product -> tags() -> attach($tagIds);
 
