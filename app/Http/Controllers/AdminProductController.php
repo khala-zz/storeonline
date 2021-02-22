@@ -155,10 +155,10 @@ class AdminProductController extends Controller
 	              $tagIds[] = $tagInstance -> id;
 	          }
 	        }
-		   dd('tag'); 
+		   
     		//trong Product model lam reletionship belongtomany function tags() de insert du lieu vao bang trung gian
     		$product -> tags() -> attach($tagIds);
-
+			dd('tag store'); 
     		//insert toan ven du lieu
     		DB::commit();
     		return redirect() -> route('product.index') -> with('success','Thêm sản phẩm thành công');
