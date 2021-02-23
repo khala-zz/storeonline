@@ -22,7 +22,7 @@ trait StorageImageTrait
 		
 	        //$filePath = $request -> file($fieldName) -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash,'local');
 		
-		$pathToFile = Storage::disk('public')->put('uploads/'.$folderName.'/', $file);
+		$pathToFile = Storage::disk('public')->put('images/', $file);
 
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
