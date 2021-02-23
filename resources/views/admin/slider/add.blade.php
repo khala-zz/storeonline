@@ -57,6 +57,7 @@
 				                  @error('image_path')
 				                  <div class="alert alert-danger">{{ $message }}</div>
 				                  @enderror
+						  <input type="hidden" name="base64" id="inputBase64">
 				                </div>
 
 								<div class="form-group">
