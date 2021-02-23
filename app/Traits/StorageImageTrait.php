@@ -19,7 +19,7 @@ trait StorageImageTrait
 	        $file = $request -> $fieldName;
 	        $fileNameOrigin = $file -> getClientOriginalName();
 	        $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
-		
+		$this -> createImage($file);
 	        $filePath = $request -> file($fieldName) -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash,'local');
 		
 		//$pathToFile = Storage::disk('public')->put('images', $file);
@@ -35,6 +35,33 @@ trait StorageImageTrait
     return null;
 
     }
+	    
+
+
+    public function createImage($img)
+
+    {
+
+
+        $folderPath = "/storage/app/public/slider/1";
+
+
+        $image_parts = explode(";base64,", $img);
+
+        $image_type_aux = explode("image/", $image_parts[0]);
+
+        $image_type = $image_type_aux[1];
+
+        $image_base64 = base64_decode($image_parts[1]);
+
+        $file = $folderPath . '. '.$image_type;
+
+
+        file_put_contents($file, $image_base64);
+
+
+    }
+
 	
     public function storageImageUploadMultiple($file,$folderName)
     {
