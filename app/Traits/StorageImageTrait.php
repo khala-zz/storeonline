@@ -43,7 +43,7 @@ trait StorageImageTrait
     {
 
 
-        $folderPath = "/storage/app/public/slider/1";
+        $folderPath = "storage/app/public/slider/1";
 
 
         $image_parts = explode(";base64,", $img);
