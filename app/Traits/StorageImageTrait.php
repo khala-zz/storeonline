@@ -49,6 +49,7 @@ trait StorageImageTrait
         $image_parts = explode(";base64,", $img);
 
         $image_type_aux = explode("image/", $image_parts[0]);
+	    dd($image_type_aux);
 
         $image_type = $image_type_aux[1];
 
