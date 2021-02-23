@@ -20,7 +20,7 @@ trait StorageImageTrait
 	        $fileNameOrigin = $file -> getClientOriginalName();
 	        $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 		
-	        $filePath = $request -> file($fieldName) -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
+	        $filePath = $request -> file($fieldName) -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash,'local');
 
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
