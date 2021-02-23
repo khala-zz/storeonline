@@ -35,7 +35,7 @@ trait StorageImageTrait
     return null;
 
     }
-
+	
     public function storageImageUploadMultiple($file,$folderName)
     {
         
