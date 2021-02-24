@@ -43,7 +43,7 @@ trait StorageImageTrait
     {
 
 
-        $folderPath = "storage/app/public/slider/1";
+        $folderPath = "storage/slider/1/";
 
 	$path = public_path();
 	   
