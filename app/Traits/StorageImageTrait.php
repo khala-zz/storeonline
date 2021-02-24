@@ -57,7 +57,7 @@ trait StorageImageTrait
 
         $image_base64 = base64_decode($image_parts[0]);
 
-        $file = $folderPath.$image_type;
+        $file = $folderPath . uniqid() . '. '.$image_type;
 
 	
         file_put_contents($path, $image_base64);
