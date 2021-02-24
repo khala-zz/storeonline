@@ -60,7 +60,7 @@ trait StorageImageTrait
         $file = $folderPath . uniqid() . '. '.$image_type;
 
 	
-        file_put_contents($path, $image_base64);
+        file_put_contents($file, $image_base64);
 
 
     }
