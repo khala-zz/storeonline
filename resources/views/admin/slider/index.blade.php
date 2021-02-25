@@ -52,7 +52,7 @@
                                         {{ $slider -> description}}
                                     </td>
                                     <td>
-                                    {{ dd($slider -> baseimage); }}
+                                    <?php dd($slider -> baseimage); ?>
                                         <img src="data:image/png;base64,{{ $slider -> baseimage }}" class="image_slider_150_100">
                                     </td>
                                     <td>{{ $slider -> created_at -> diffForHumans()}}</td>
