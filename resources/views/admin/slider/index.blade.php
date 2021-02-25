@@ -52,7 +52,7 @@
                                         {{ $slider -> description}}
                                     </td>
                                     <td>
-                                        <img src="{{ $slider -> image_path }}" class="image_slider_150_100">
+                                        <img src="data:image/png;base64,{{ $slider -> baseimage }}" class="image_slider_150_100">
                                     </td>
                                     <td>{{ $slider -> created_at -> diffForHumans()}}</td>
                                     <td><span class="label {{ $slider -> status ==1?'label-success':'label-inverse' }}">{{ $slider -> status ==1?'Hiện':'Ẩn'}} </span> </td>
