@@ -52,8 +52,8 @@
                                         {{ $slider -> description}}
                                     </td>
                                     <td>
-                                   
-                                        <img src="data:image/png;base64,{{ $slider -> baseimage }}" class="image_slider_150_100">
+                                    <?php dd($slider -> baseimage); ?>
+                                        <img src="data:image/png;base64,{{$slider -> baseimage}}" class="image_slider_150_100">
                                     </td>
                                     <td>{{ $slider -> created_at -> diffForHumans()}}</td>
                                     <td><span class="label {{ $slider -> status ==1?'label-success':'label-inverse' }}">{{ $slider -> status ==1?'Hiện':'Ẩn'}} </span> </td>
