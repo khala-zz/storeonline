@@ -51,6 +51,7 @@ class SliderController extends Controller
     		if(!empty($dataImageSlider)){
     			$dataInsert['image_path'] = $dataImageSlider['file_path'];
     			$dataInsert['image_name'] = $dataImageSlider['file_name'];
+                $dataInsert['baseimage'] = $dataImageSlider['baseimage'];
     		}
     		//them du lieu
 
