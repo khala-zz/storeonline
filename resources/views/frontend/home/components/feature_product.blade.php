@@ -5,7 +5,7 @@
 		<div class="product-image-wrapper">
 			<div class="single-products">
 				<div class="productinfo text-center">
-					<img src="{{ $product -> feature_image_path }}" alt="" />
+					<img src="data:image/png;base64,{{$product -> baseimage}}" alt="" />
 					{{--
 					<h2>{{ number_format($product -> price) }} VND</h2>
 					--}}
