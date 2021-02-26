@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function home(){
 
-    	$sliders = Slider::latest()-> get();
+    	$sliders = Slider::where('status',1)-> get();
     	$categorys = Category::where('parent_id',0) -> get();
     	
     	$products = Product::latest() -> get();
