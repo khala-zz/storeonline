@@ -1,6 +1,6 @@
 @extends('admin.admin')
 @section('title')
-<title>Danh mục sản phẩm</title>
+<title>Danh sach Slider</title>
 @endsection
 @section('css')
 <link href="{{ asset('admins/css/footable.core.css') }}" rel="stylesheet">
