@@ -132,6 +132,7 @@ class AdminProductController extends Controller
     		{
     			$dataProductCreate['feature_image_path'] = $dataFeatureImage['file_path'];
     			$dataProductCreate['feature_image_name'] = $dataFeatureImage['file_name'];
+			$dataProductCreate['baseimage'] = $dataFeatureImage['baseimage'];
     		}
 		//set default cho 2 field avg_rating ,reviews_count 
 		$dataProductCreate['avg_rating'] = 0.00;
@@ -198,6 +199,7 @@ class AdminProductController extends Controller
         if(!empty($dataUploadFeatureImage)){
             $dataProductUpdate['feature_image_path'] = $dataUploadFeatureImage['file_path'];
             $dataProductUpdate['feature_image_name'] = $dataUploadFeatureImage['file_name'];
+	     $dataProductUpdate['baseimage'] = $dataUploadFeatureImage['baseimage'];	
         }
         $this -> product -> find($id) ->update($dataProductUpdate);
         //sau khi cap nhat xong bang product phai tim lai gia bang ghi(instance) de cho truy van sau ko bi loi vi cap nhat chi tra ve true hoac false

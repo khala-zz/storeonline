@@ -72,7 +72,7 @@
                                 <tr>
                                     <td>{{ $product -> id}}</td>
                                      <td>
-                                        <img src="{{ $product -> feature_image_path }}" class="image_product_50_50">
+                                        <img src="data:image/png;base64,{{$product -> baseimage}}" class="image_product_50_50">
                                     </td>
                                     <td>
                                         {{ $product -> name}}

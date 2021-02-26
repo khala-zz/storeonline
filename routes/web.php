@@ -211,7 +211,8 @@ Route::prefix('admin') -> group(function(){
 		Route::post('store',[AdminProductController::class,'store']) -> name('product.store');
 		//sua product
 		//truyen id den middlewarde de biet bai viet id la may de lay ra user_id bai viet do
-		Route::get('edit/{id}',[AdminProductController::class,'edit']) -> name('product.edit') -> middleware('can:product-edit,id');
+		//Route::get('edit/{id}',[AdminProductController::class,'edit']) -> name('product.edit') -> middleware('can:product-edit,id');
+		Route::get('edit/{id}',[AdminProductController::class,'edit']) -> name('product.edit');
 		Route::post('update/{id}',[AdminProductController::class,'update']) -> name('product.update');
 
 		//xoa product
