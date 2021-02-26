@@ -19,7 +19,7 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{$slider -> image_path}}" class="girl img-responsive" alt="" />
+									<img src="data:image/png;base64,{{$slider -> baseimage}}" class="girl img-responsive" alt="" />
 									<img src="{{ asset('images/home/pricing.png') }}"  class="pricing" alt="" />
 								</div>
 							</div>
