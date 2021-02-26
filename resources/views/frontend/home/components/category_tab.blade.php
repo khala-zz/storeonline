@@ -19,7 +19,7 @@
 				<div class="product-image-wrapper">
 					<div class="single-products">
 						<div class="productinfo text-center">
-							<img src="{{ $productItemTabs -> feature_image_path }}" alt="" />
+							<img src="data:image/png;base64,{{$productItemTabs -> baseimage}}" alt="" />
 							<h2>{{ $productItemTabs -> price }} VND</h2>
 							<p>{{$productItemTabs -> name}}</p>
 							<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
