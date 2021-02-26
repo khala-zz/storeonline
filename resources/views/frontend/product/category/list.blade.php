@@ -25,7 +25,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}"><img src="{{ $product -> feature_image_path }}" alt="" />
+										<a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}"><img src="data:image/png;base64,{{$product -> baseimage}}" alt="" />
 											</a>
 										<h2>{{number_format($product -> price)}} VND</h2>
 										<p><a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}">{{ $product -> name }}</a></p>
