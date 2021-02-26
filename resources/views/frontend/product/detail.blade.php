@@ -28,7 +28,7 @@
 							<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
 
 								<a href="{{$detail_product->feature_image_path}}">
-									<img src="{{$detail_product->feature_image_path}}" alt="" id="dynamicImage" style="width: 300px;height: 300px;" />
+									<img src="data:image/png;base64,{{$detail_product -> baseimage}}" alt="" id="dynamicImage" style="width: 300px;height: 300px;" />
 								</a>
 							</div>
 
