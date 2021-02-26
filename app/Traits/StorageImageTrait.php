@@ -25,7 +25,7 @@ trait StorageImageTrait
 		
 		//$pathToFile = Storage::disk('public')->put('images', $file);
 		//Storage::disk('local')->put('example.txt', 'Contents');
-		$path = public_path() . "/images/" . $fileNameOrigin;
+		//$path = public_path() . "/images/" . $fileNameOrigin;
 
 		$imageBase = base64_encode(file_get_contents($file));
 	        $dataUploadTrait = [
