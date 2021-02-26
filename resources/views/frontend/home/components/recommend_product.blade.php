@@ -15,7 +15,7 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<img src="{{ $productRecommendItem -> feature_image_path }}" alt="" />
+								<img src="data:image/png;base64,{{$productRecommendItem -> baseimage}}" alt="" />
 								<h2>{{$productRecommendItem -> price}}</h2>
 								<p><a href="{{ route('product.detail',['slug' => $productRecommendItem -> slug,'id' => $productRecommendItem -> id])}}">{{ $productRecommendItem -> name }}</a></p>
 								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
