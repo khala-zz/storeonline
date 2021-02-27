@@ -80,11 +80,14 @@ trait StorageImageTrait
 	  
 	    
 	        $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
-	    dd($large_image_path);
+	    //dd($large_image_path);
             $medium_image_path=public_path($folderName.'/'.'medium/'.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
-            Image::make($file)->save($large_image_path);
+            if(Image::make($file)->save($large_image_path))
+		    dd('true');
+	    else
+		    dd('false);
             Image::make($file)->resize(600,600)->save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
 	        $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
