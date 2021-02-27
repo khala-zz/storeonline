@@ -27,7 +27,8 @@ class ImageGalleryController extends Controller
 
     public function add($product_id)
     {
-    	$product = $this -> product -> findOrFail($product_id);
+    	dd('add');
+	    $product = $this -> product -> findOrFail($product_id);
     	$imagesGallery = $this -> product_images -> where('product_id',$product_id) -> get();
     	return view('admin.product.add-gallery-image',compact('product','imagesGallery'));
     }
