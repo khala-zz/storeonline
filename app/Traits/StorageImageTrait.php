@@ -77,8 +77,10 @@ trait StorageImageTrait
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	        $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 
-	
+	  
+	    
 	        $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
+	    dd($large_image_path);
             $medium_image_path=public_path($folderName.'/'.'medium/'.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
