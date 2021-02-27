@@ -27,7 +27,7 @@ class ImageGalleryController extends Controller
 
     public function add($product_id)
     {
-    	dd('add');
+    	
 	    $product = $this -> product -> findOrFail($product_id);
     	$imagesGallery = $this -> product_images -> where('product_id',$product_id) -> get();
     	return view('admin.product.add-gallery-image',compact('product','imagesGallery'));
@@ -35,7 +35,8 @@ class ImageGalleryController extends Controller
 
     public function store(Request $request)
     {
-        $product = $this -> product -> findOrFail($request -> products_id);
+       dd('store');
+	    $product = $this -> product -> findOrFail($request -> products_id);
         //kiem tra co anh chi tiet('image_path') thi inser vao table ProductImage
     		if($request -> hasFile('image_path')){
     			foreach($request -> image_path as $fileItem){
