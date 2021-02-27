@@ -12,7 +12,7 @@ use Image;
  */
 trait StorageImageTrait
 {
-
+	
     public function storageImageUpload($request,$fieldName,$folderName)
     {
         if($request -> hasFile($fieldName)){
@@ -95,6 +95,11 @@ trait StorageImageTrait
 	        	'file_path' => Storage::url($filePath),
 	        	'name' => $fileNameHash
 	        ];
+
+	        
+ 
+			$googleDriveStorage = Storage::disk('google_drive');
+			$googleDriveStorage->put('test.txt', 'Hello world');
 
 	        return $dataUploadTrait;
     
