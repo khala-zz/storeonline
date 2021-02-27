@@ -16,7 +16,7 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "unisharp/laravel-filemanager": "^2.2",
-        "ext-gd": "*"
+        "gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
