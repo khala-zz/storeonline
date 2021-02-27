@@ -73,7 +73,7 @@ trait StorageImageTrait
     public function storageImageUploadMultiple($file,$folderName)
     {
         
-	    dd('test');    
+	      
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	        $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 
