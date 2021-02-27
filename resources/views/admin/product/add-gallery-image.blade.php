@@ -25,7 +25,7 @@
                             <h1>Thêm image gallery</h1>
                             <form action="{{route('image-gallery.store')}}" method="post" role="form" enctype="multipart/form-data">
                                     
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    @csrf
                                     <div class="form-group">
                                         <input type="hidden" name="products_id" value="{{$product->id}}">
                                         <input type="file" name="image_path[]" id="id_imageGallery" class="form-control" multiple="multiple" required>
