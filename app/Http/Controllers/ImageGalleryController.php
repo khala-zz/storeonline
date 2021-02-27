@@ -35,7 +35,7 @@ class ImageGalleryController extends Controller
 
     public function store(Request $request)
     {
-       dd('store');
+      
 	    $product = $this -> product -> findOrFail($request -> products_id);
         //kiem tra co anh chi tiet('image_path') thi inser vao table ProductImage
     		if($request -> hasFile('image_path')){
