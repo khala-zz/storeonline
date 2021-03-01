@@ -78,8 +78,10 @@ trait StorageImageTrait
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
-	    dd(Storage::disk('google_drive'));
-            $medium_image_path=public_path(Storage::disk('google_drive').'/'.'1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'.$fileNameHash);
+	    //dd(Storage::disk('google_drive'));
+	    $path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
+	    //dd(Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix());
+            $medium_image_path=public_path($path_google.'/'.'1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
             Image::make($file)->save($large_image_path);
