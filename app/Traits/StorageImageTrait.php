@@ -91,7 +91,7 @@ trait StorageImageTrait
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $googleDriveStorage->put('test1.txt', 'Hello world');
-	    $file -> storeAs('product',$fileNameHash,'google_drive');
+	    $file -> storeAs('product/',$fileNameHash,'google_drive');
 	    $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
 
 	        $dataUploadTrait = [
