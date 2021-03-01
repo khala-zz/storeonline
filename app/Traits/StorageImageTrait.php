@@ -45,28 +45,15 @@ trait StorageImageTrait
     public function createImage($img)
 
     {
-
-
         $folderPath = "storage/slider/1/";
-
 	$path = public_path();
-	   
         $image_parts = explode(";base64,", $img);
-	   
-
         $image_type_aux = explode("image/", $image_parts[0]);
 	    //dd($image_type_aux);
-
         $image_type = $image_type_aux[0];
-
         $image_base64 = base64_decode($image_parts[0]);
-
         $file = $folderPath . uniqid() . '. '.$image_type;
-
-	
         file_put_contents($file, $image_base64);
-
-
     }
 
 	
@@ -79,14 +66,14 @@ trait StorageImageTrait
 
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
 	    //dd(Storage::disk('google_drive'));
-	    $path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
+	    //$path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
 	    //dd(Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix());
-            $medium_image_path=public_path($path_google.'/'.'1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'.$fileNameHash);
+            //$medium_image_path=public_path($path_google.'/'.'1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
             Image::make($file)->save($large_image_path);
 	
-            $file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path);
+            //$file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
@@ -94,6 +81,9 @@ trait StorageImageTrait
 	    //$filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
 	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
 	    $filePath = $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH',$fileNameHash,'google_drive');
+	    $medium_path = Storage::url($filePath);
+	    $file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path)
+	    
 	    //small:19_X0lc8GknbdDeEJ1vDo4ve7N2uPEaXs
 	    //medium:1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA
 	    
