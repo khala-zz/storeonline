@@ -75,11 +75,9 @@ trait StorageImageTrait
         
 	      
 	    $fileNameOrigin = $file -> getClientOriginalName();
-	        $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
+	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 
-	  
-	    
-	        $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
+	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
 	    //dd($large_image_path);
             $medium_image_path=public_path($folderName.'/'.'medium/'.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
@@ -92,7 +90,11 @@ trait StorageImageTrait
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $googleDriveStorage->put('test1.txt', 'Hello world');
 	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY',$fileNameHash,'google_drive');
+	    //$filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
 	    $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
+	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
+	    //small:19_X0lc8GknbdDeEJ1vDo4ve7N2uPEaXs
+	    //medium:1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA
 
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
