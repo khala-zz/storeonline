@@ -88,7 +88,11 @@ trait StorageImageTrait
 	
             Image::make($file)->resize(600,600)->save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
-	        $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
+	    
+	    $googleDriveStorage = Storage::disk('google_drive');
+	    $googleDriveStorage->put('test1.txt', 'Hello world');
+	    $file -> storeAs('product',$fileNameHash,'google_drive');
+	    $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
 
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
@@ -98,8 +102,7 @@ trait StorageImageTrait
 
 	        
  
-			$googleDriveStorage = Storage::disk('google_drive');
-			$googleDriveStorage->put('test.txt', 'Hello world');
+			
 
 	        return $dataUploadTrait;
     
