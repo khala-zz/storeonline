@@ -82,7 +82,7 @@ trait StorageImageTrait
 	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
 	    $filePath = $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH',$fileNameHash,'google_drive');
 	    $medium_path = Storage::url($filePath);
-	    $file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path)
+	    $file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path);
 	    
 	    //small:19_X0lc8GknbdDeEJ1vDo4ve7N2uPEaXs
 	    //medium:1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA
