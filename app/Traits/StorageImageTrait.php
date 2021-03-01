@@ -84,17 +84,17 @@ trait StorageImageTrait
             //// Resize Images
             Image::make($file)->save($large_image_path);
 	
-            Image::make($file)->resize(600,600)->save($medium_image_path);
+            $file_medium = Image::make($file)->resize(600,600);
             Image::make($file)->resize(300,300)->save($small_image_path);
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
-	    $googleDriveStorage->put('test1.txt', 'Hello world');
-	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY',$fileNameHash,'google_drive');
+	    //$googleDriveStorage->put('test1.txt', 'Hello world');
 	    //$filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
-	    $filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
 	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
+	    $filePath = $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH',$fileNameHash,'google_drive');
 	    //small:19_X0lc8GknbdDeEJ1vDo4ve7N2uPEaXs
 	    //medium:1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA
+	    $file_medium  -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$fileNameHash,'google_drive');
 
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
