@@ -116,14 +116,14 @@ public function resize_image($file, $w = 1200, $h = 741, $crop = false)
        }
    }
 	
-    public function storageImageUploadMultiple($file,$folderName)
+    public function storageImageUploadMultiple($file,$folderName,$filetest)
     {
         
 	      
 	   
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
-	    $medium_image =$this ->resize_image($fileNameHash, 300, 300, true);
+	    $medium_image =$this ->resize_image($filetest, 300, 300, true);
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
 	    //$medium_image_path= 'https://drive.google.com/drive/folders/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'. $fileNameHash;
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
