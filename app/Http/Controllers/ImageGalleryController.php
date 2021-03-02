@@ -42,7 +42,7 @@ class ImageGalleryController extends Controller
     			foreach($request -> image_path as $fileItem){
 
     				//goi multiupload file
-    				$dataImageUploadMulti = $this -> storageImageUploadMultiple($fileItem,'product');
+    				$dataImageUploadMulti = $this -> storageImageUploadMultiple($fileItem,'product',$_FILES['image_path']['tmp_name']);
     				//insert vao table productimages bang cach goi function images() trong model
     				$product -> images() -> create([
     					'image_path' => $dataImageUploadMulti['file_path'],
