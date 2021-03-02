@@ -120,6 +120,7 @@ public function resize_image($file, $w = 1200, $h = 741, $crop = false)
     {
         
 	      
+	    dd($file);
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
 	    $medium_image =$this ->resize_image($file, 300, 300, true);
