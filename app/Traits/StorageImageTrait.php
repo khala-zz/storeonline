@@ -63,9 +63,6 @@ trait StorageImageTrait
 	      
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
-	    
-	    dd($fileNameOrigin . '-------'.$fileNameHash);
-
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
 	    //dd(Storage::disk('google_drive'));
 	    //$path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
