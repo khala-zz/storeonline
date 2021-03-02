@@ -122,13 +122,8 @@ public function resize_image($file, $w = 1200, $h = 741, $crop = false)
 	      
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
+	    
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
-	    //dd(Storage::disk('google_drive'));
-	    //$path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
-	    //dd(Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix());
-	    //$metadata = Storage::disk('google_drive')->getAdapter()->getMetadata('1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA');
-	    //dd($metadata);
-            
 	    //$medium_image_path= 'https://drive.google.com/drive/folders/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'. $fileNameHash;
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
@@ -136,12 +131,11 @@ public function resize_image($file, $w = 1200, $h = 741, $crop = false)
 	
             //Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
-	    $medium_image =$this ->resize_image($file, 600, 600,false);
+	    $medium_image =$this ->resize_image($fileNameOrigin, 600, 600,false);
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
-	    //$googleDriveStorage->put('test1.txt', 'Hello world');
-	    //$filePath = $file -> storeAs('public/'.$folderName.'/'. Auth::id(),$fileNameHash);
+	   
 	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
 	    $filePath = $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH',$fileNameHash,'google_drive');
 	    
