@@ -43,7 +43,7 @@ trait StorageImageTrait
 public function resize_image($file, $w = 1200, $h = 741, $crop = false)
    {
        try {
-           $ext = pathinfo(storage_path() . $file, PATHINFO_EXTENSION);
+           $ext = pathinfo($file, PATHINFO_EXTENSION);
            list($width, $height) = getimagesize($file);
            // if the image is smaller we dont resize
            if ($w > $width && $h > $height) {
