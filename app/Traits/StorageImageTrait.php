@@ -39,23 +39,78 @@ trait StorageImageTrait
     return null;
 
     }
-	    
+/**
+         * Image re-size
+         * @param int $width
+         * @param int $height
+         */
+        public function ImageResize($width, $height, $img_name)
+        {
+                /* Get original file size */
+                list($w, $h) = getimagesize($_FILES['logo_image']['tmp_name']);
 
 
-    public function createImage($img)
+                /*$ratio = $w / $h;
+                $size = $width;
 
-    {
-        $folderPath = "storage/slider/1/";
-	$path = public_path();
-        $image_parts = explode(";base64,", $img);
-        $image_type_aux = explode("image/", $image_parts[0]);
-	    //dd($image_type_aux);
-        $image_type = $image_type_aux[0];
-        $image_base64 = base64_decode($image_parts[0]);
-        $file = $folderPath . uniqid() . '. '.$image_type;
-        file_put_contents($file, $image_base64);
-    }
+                $width = $height = min($size, max($w, $h));
 
+                if ($ratio < 1) {
+                    $width = $height * $ratio;
+                } else {
+                    $height = $width / $ratio;
+                }*/
+
+                /* Calculate new image size */
+                $ratio = max($width/$w, $height/$h);
+                $h = ceil($height / $ratio);
+                $x = ($w - $width / $ratio) / 2;
+                $w = ceil($width / $ratio);
+                /* set new file name */
+                $path = $img_name;
+
+
+                /* Save image */
+                if($_FILES['logo_image']['type']=='image/jpeg')
+                {
+                    /* Get binary data from image */
+                    $imgString = file_get_contents($_FILES['logo_image']['tmp_name']);
+                    /* create image from string */
+                    $image = imagecreatefromstring($imgString);
+                    $tmp = imagecreatetruecolor($width, $height);
+                    imagecopyresampled($tmp, $image, 0, 0, $x, 0, $width, $height, $w, $h);
+                    imagejpeg($tmp, $path, 100);
+                }
+                else if($_FILES['logo_image']['type']=='image/png')
+                {
+                    $image = imagecreatefrompng($_FILES['logo_image']['tmp_name']);
+                    $tmp = imagecreatetruecolor($width,$height);
+                    imagealphablending($tmp, false);
+                    imagesavealpha($tmp, true);
+                    imagecopyresampled($tmp, $image,0,0,$x,0,$width,$height,$w, $h);
+                    imagepng($tmp, $path, 0);
+                }
+                else if($_FILES['logo_image']['type']=='image/gif')
+                {
+                    $image = imagecreatefromgif($_FILES['logo_image']['tmp_name']);
+
+                    $tmp = imagecreatetruecolor($width,$height);
+                    $transparent = imagecolorallocatealpha($tmp, 0, 0, 0, 127);
+                    imagefill($tmp, 0, 0, $transparent);
+                    imagealphablending($tmp, true); 
+
+                    imagecopyresampled($tmp, $image,0,0,0,0,$width,$height,$w, $h);
+                    imagegif($tmp, $path);
+                }
+                else
+                {
+                    return false;
+                }
+
+                return true;
+                imagedestroy($image);
+                imagedestroy($tmp);
+}
 	
     public function storageImageUploadMultiple($file,$folderName)
     {
@@ -77,8 +132,8 @@ trait StorageImageTrait
 	
             //Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
-	    $medium_image =imagescale(imagecreatefromjpeg($file),600,600);
-	    dd($medium_image);
+	    $medium_image =$this -> ImageResize(600, 600, $fileNameHash);
+	    
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
 	    //$googleDriveStorage->put('test1.txt', 'Hello world');
@@ -99,12 +154,6 @@ trait StorageImageTrait
 	        	'name' => $fileNameHash
 	        ];
 
-	        
- 
-			
-
 	        return $dataUploadTrait;
-    
-
     }
 }
