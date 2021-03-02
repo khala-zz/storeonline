@@ -71,7 +71,7 @@ trait StorageImageTrait
 	    $metadata = Storage::disk('google_drive')->getAdapter()->getMetadata('1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA');
 	    //dd($metadata);
             
-	    $medium_image_path=public_path($metadata.$fileNameHash);
+	    $medium_image_path= $metadata['path'] .'/'. $fileNameHash;
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
             Image::make($file)->save($large_image_path);
