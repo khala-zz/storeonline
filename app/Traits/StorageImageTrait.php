@@ -39,78 +39,82 @@ trait StorageImageTrait
     return null;
 
     }
-/**
-         * Image re-size
-         * @param int $width
-         * @param int $height
-         */
-        public function ImageResize($width, $height, $img_name)
-        {
-                /* Get original file size */
-                list($w, $h) = getimagesize($_FILES['logo_image']['tmp_name']);
+	
+public function resize_image($file, $w = 1200, $h = 741, $crop = false)
+   {
+       try {
+           $ext = pathinfo(storage_path() . $file, PATHINFO_EXTENSION);
+           list($width, $height) = getimagesize($file);
+           // if the image is smaller we dont resize
+           if ($w > $width && $h > $height) {
+               return true;
+           }
+           $r = $width / $height;
+           if ($crop) {
+               if ($width > $height) {
+                   $width = ceil($width - ($width * abs($r - $w / $h)));
+               } else {
+                   $height = ceil($height - ($height * abs($r - $w / $h)));
+               }
+               $newwidth = $w;
+               $newheight = $h;
+           } else {
+               if ($w / $h > $r) {
+                   $newwidth = $h * $r;
+                   $newheight = $h;
+               } else {
+                   $newheight = $w / $r;
+                   $newwidth = $w;
+               }
+           }
+           $dst = imagecreatetruecolor($newwidth, $newheight);
 
-
-                /*$ratio = $w / $h;
-                $size = $width;
-
-                $width = $height = min($size, max($w, $h));
-
-                if ($ratio < 1) {
-                    $width = $height * $ratio;
-                } else {
-                    $height = $width / $ratio;
-                }*/
-
-                /* Calculate new image size */
-                $ratio = max($width/$w, $height/$h);
-                $h = ceil($height / $ratio);
-                $x = ($w - $width / $ratio) / 2;
-                $w = ceil($width / $ratio);
-                /* set new file name */
-                $path = $img_name;
-
-
-                /* Save image */
-                if($_FILES['logo_image']['type']=='image/jpeg')
-                {
-                    /* Get binary data from image */
-                    $imgString = file_get_contents($_FILES['logo_image']['tmp_name']);
-                    /* create image from string */
-                    $image = imagecreatefromstring($imgString);
-                    $tmp = imagecreatetruecolor($width, $height);
-                    imagecopyresampled($tmp, $image, 0, 0, $x, 0, $width, $height, $w, $h);
-                    imagejpeg($tmp, $path, 100);
-                }
-                else if($_FILES['logo_image']['type']=='image/png')
-                {
-                    $image = imagecreatefrompng($_FILES['logo_image']['tmp_name']);
-                    $tmp = imagecreatetruecolor($width,$height);
-                    imagealphablending($tmp, false);
-                    imagesavealpha($tmp, true);
-                    imagecopyresampled($tmp, $image,0,0,$x,0,$width,$height,$w, $h);
-                    imagepng($tmp, $path, 0);
-                }
-                else if($_FILES['logo_image']['type']=='image/gif')
-                {
-                    $image = imagecreatefromgif($_FILES['logo_image']['tmp_name']);
-
-                    $tmp = imagecreatetruecolor($width,$height);
-                    $transparent = imagecolorallocatealpha($tmp, 0, 0, 0, 127);
-                    imagefill($tmp, 0, 0, $transparent);
-                    imagealphablending($tmp, true); 
-
-                    imagecopyresampled($tmp, $image,0,0,0,0,$width,$height,$w, $h);
-                    imagegif($tmp, $path);
-                }
-                else
-                {
-                    return false;
-                }
-
-                return true;
-                imagedestroy($image);
-                imagedestroy($tmp);
-}
+           switch ($ext) {
+               case 'jpg':
+               case 'jpeg':
+                   $src = imagecreatefromjpeg($file);
+                   break;
+               case 'png':
+                   $src = imagecreatefrompng($file);
+                   imagecolortransparent($dst, imagecolorallocatealpha($dst, 0, 0, 0, 127));
+                   imagealphablending($dst, false);
+                   imagesavealpha($dst, true);
+                   break;
+               case 'gif':
+                   $src = imagecreatefromgif($file);
+                   imagecolortransparent($dst, imagecolorallocatealpha($dst, 0, 0, 0, 127));
+                   imagealphablending($dst, false);
+                   imagesavealpha($dst, true);
+                   break;
+               case 'bmp':
+                   $src = imagecreatefrombmp($file);
+                   break;
+               default:
+                   throw new Exception('Unsupported image extension found: ' . $ext);
+                   break;
+           }
+           $result = imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+           switch ($ext) {
+               case 'bmp':
+                   imagewbmp($dst, $file);
+                   break;
+               case 'gif':
+                   imagegif($dst, $file);
+                   break;
+               case 'jpg':
+               case 'jpeg':
+                   imagejpeg($dst, $file);
+                   break;
+               case 'png':
+                   imagepng($dst, $file);
+                   break;
+           }
+           return true;
+       } catch (Exception $err) {
+           // LOG THE ERROR HERE 
+           return false;
+       }
+   }
 	
     public function storageImageUploadMultiple($file,$folderName)
     {
@@ -132,7 +136,7 @@ trait StorageImageTrait
 	
             //Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
-	    $medium_image =$this -> ImageResize(600, 600, $fileNameHash);
+	    $medium_image =$this ->resize_image($fileNameHash, 600, 600,false);
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
