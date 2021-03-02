@@ -69,14 +69,14 @@ trait StorageImageTrait
 	    //$path_google = Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix();
 	    //dd(Storage::disk('google_drive')->getDriver()->getAdapter()->getPathPrefix());
 	    $metadata = Storage::disk('google_drive')->getAdapter()->getMetadata('1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA');
-	    dd($metadata);
+	    //dd($metadata);
             
-	    $medium_image_path=public_path($path_google.'/'.'1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'.$fileNameHash);
+	    $medium_image_path=public_path($metadata.$fileNameHash);
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
             //// Resize Images
             Image::make($file)->save($large_image_path);
 	
-            //$file_medium = Image::make($file)->resize(600,600) -> save($medium_image_path);
+            Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
