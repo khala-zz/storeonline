@@ -77,7 +77,7 @@ trait StorageImageTrait
 	
             //Image::make($file)->resize(600,600) -> save($medium_image_path);
             Image::make($file)->resize(300,300)->save($small_image_path);
-	    $medium_image =imagescale(imagecreatefromjpeg($fileNameHash),600,600);
+	    $medium_image =imagescale(imagecreatefromjpeg($file),600,600);
 	    $googleDriveStorage = Storage::disk('google_drive');
 	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
 	    //$googleDriveStorage->put('test1.txt', 'Hello world');
