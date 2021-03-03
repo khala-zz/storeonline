@@ -30,6 +30,7 @@ class ImageGalleryController extends Controller
     	
 	    $product = $this -> product -> findOrFail($product_id);
     	$imagesGallery = $this -> product_images -> where('product_id',$product_id) -> get();
+	    dd($imagesGallery);
     	return view('admin.product.add-gallery-image',compact('product','imagesGallery'));
     }
 
