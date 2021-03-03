@@ -40,81 +40,7 @@ trait StorageImageTrait
 
     }
 	
-public function resize_image($file, $type, $w = 1200, $h = 741, $crop = false)
-   {
-       try {
-           $ext = pathinfo($type, PATHINFO_EXTENSION);
-           list($width, $height) = getimagesize($type);
-           // if the image is smaller we dont resize
-           if ($w > $width && $h > $height) {
-               return true;
-           }
-           $r = $width / $height;
-           if ($crop) {
-               if ($width > $height) {
-                   $width = ceil($width - ($width * abs($r - $w / $h)));
-               } else {
-                   $height = ceil($height - ($height * abs($r - $w / $h)));
-               }
-               $newwidth = $w;
-               $newheight = $h;
-           } else {
-               if ($w / $h > $r) {
-                   $newwidth = $h * $r;
-                   $newheight = $h;
-               } else {
-                   $newheight = $w / $r;
-                   $newwidth = $w;
-               }
-           }
-           $dst = imagecreatetruecolor($newwidth, $newheight);
 
-           switch ($ext) {
-               case 'jpg':
-               case 'jpeg':
-                   $src = imagecreatefromjpeg($file);
-                   break;
-               case 'png':
-                   $src = imagecreatefrompng($file);
-                   imagecolortransparent($dst, imagecolorallocatealpha($dst, 0, 0, 0, 127));
-                   imagealphablending($dst, false);
-                   imagesavealpha($dst, true);
-                   break;
-               case 'gif':
-                   $src = imagecreatefromgif($file);
-                   imagecolortransparent($dst, imagecolorallocatealpha($dst, 0, 0, 0, 127));
-                   imagealphablending($dst, false);
-                   imagesavealpha($dst, true);
-                   break;
-               case 'bmp':
-                   $src = imagecreatefrombmp($file);
-                   break;
-               default:
-                   throw new Exception('Unsupported image extension found: ' . $ext);
-                   break;
-           }
-           $result = imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-           switch ($ext) {
-               case 'bmp':
-                   imagewbmp($dst, $file);
-                   break;
-               case 'gif':
-                   imagegif($dst, $file);
-                   break;
-               case 'jpg':
-               case 'jpeg':
-                   imagejpeg($dst, $file);
-                   break;
-               case 'png':
-                   imagepng($dst, $file);
-                   break;
-           }
-           return true;
-       } catch (Exception $err) {
-           // LOG THE ERROR HERE 
-           return false;
-       }
-   }
 	
     public function storageImageUploadMultiple($file,$folderName,$filetest)
     {
@@ -123,7 +49,7 @@ public function resize_image($file, $type, $w = 1200, $h = 741, $crop = false)
 	   
 	    $fileNameOrigin = $file -> getClientOriginalName();
 	    $fileNameHash = Str::random(20). '.'. $file -> getClientOriginalExtension();
-	    $medium_image =$this ->resize_image($filetest,$file, 300, 300, true);
+	    //$medium_image =$this ->resize_image($filetest,$file, 300, 300, true);
 	    $large_image_path=public_path($folderName.'/'.'large/'.$fileNameHash);
 	    //$medium_image_path= 'https://drive.google.com/drive/folders/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA/'. $fileNameHash;
             $small_image_path=public_path($folderName.'/'.'small/'.$fileNameHash);
@@ -136,7 +62,7 @@ public function resize_image($file, $type, $w = 1200, $h = 741, $crop = false)
 	    
 	    
 	    $googleDriveStorage = Storage::disk('google_drive');
-	    $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
+	    //$file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA',$medium_image,'google_drive');
 	   
 	    //large:1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH
 	    $filePath = $file -> storeAs('1iuso5O6fepnoViK679d9EplkVHmN-UvY/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH',$fileNameHash,'google_drive');
