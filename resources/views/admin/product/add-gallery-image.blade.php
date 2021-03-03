@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>
-                                                    <img src="{{ $image -> name }}" class="image_product_100_100">
+                                                    <img src="https://drive.google.com/drive/folders/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH/ {{ $image -> name }}" class="image_product_100_100">
                                                 </td>
                                                 <td>
                                                     <a href="" data-url="{{ route('image-gallery.delete',['id' => $image -> id]) }}" data-toggle="tooltip" data-original-title="Delete" class="sa-warning"> <i class="fa fa-close text-danger"></i> </a>
