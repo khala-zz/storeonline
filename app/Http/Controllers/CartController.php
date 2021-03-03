@@ -51,6 +51,8 @@ class CartController extends Controller
                 $sizeAtrr=explode("-",$inputToCart['size']);
                 $inputToCart['size']=$sizeAtrr[1];
                 $inputToCart['product_code']=$stockAvailable->sku;
+                //khong che chay tren host heroku
+                $inputToCart['product_color']='red';
                 //kiem tra trong gio hang co mua chua?
                 $count_duplicateItems=Cart::where(['product_id'=>$inputToCart['product_id'],
                     'product_color'=>$inputToCart['product_color'],
