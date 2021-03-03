@@ -73,11 +73,11 @@ trait StorageImageTrait
 	    //small:19_X0lc8GknbdDeEJ1vDo4ve7N2uPEaXs
 	    //medium:1TZZWa2MumDZjO-gKIPjaFPCi2nvbFcvA
 	    
-	    $name_gg = 'https://drive.google.com/drive/folders/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH/'.$fileNameHash;	
+	    //$name_gg = 'https://drive.google.com/drive/folders/1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH/'.$fileNameHash;	
 	        $dataUploadTrait = [
 	        	'file_name' => $fileNameOrigin,
 	        	'file_path' => Storage::url($filePath),
-	        	'name' => $name_gg
+	        	'name' => $fileNameHash
 	        ];
 
 	        return $dataUploadTrait;
