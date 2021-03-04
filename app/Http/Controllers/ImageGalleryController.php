@@ -48,6 +48,8 @@ class ImageGalleryController extends Controller
     //return $file; // array with file info
 
      $readStream = Storage::disk('google_drive')->getDriver()->readStream($file['path']);
+echo "<img src = '".$readStream."'>";
+dd($readStream);
 
     return response()->stream(function () use ($readStream) {
         fpassthru($readStream);
