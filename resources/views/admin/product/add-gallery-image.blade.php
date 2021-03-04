@@ -69,7 +69,7 @@ $googleDriveStorage = Storage::disk('google_drive');
                                                 ->first();
                                             // Đọc nội dung file 'test.txt' mà mình đã tạo ở trên
                                             $contents = $googleDriveStorage->get($fileinfo['path']);
-                                            dd($contents);
+                                            
  
 
                                             ?>
