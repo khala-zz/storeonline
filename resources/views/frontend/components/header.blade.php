@@ -38,7 +38,8 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
 								
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+								
+								 
 								<li><a href="{{route('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 
 								<li><a href="{{ route('cart.view')}}"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-pill badge-danger">{{  session('count_item_cart') }}</a></li>
@@ -49,6 +50,7 @@
                             @else
                                 <li><a href="{{ route('user.login') }}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                             @endif
+			    <li><a href="{{ route('user.login') }}"><i class="fa fa-lock"></i> Đăng Ki</a></li>
 
 
 								
