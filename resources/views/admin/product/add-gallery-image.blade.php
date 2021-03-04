@@ -59,29 +59,28 @@
  
 use Illuminate\Support\Facades\Storage;
  
-/*$googleDriveStorage = Storage::disk('google_drive');
- 
-                                            // Trước tiên cần lấy ra thông tin của file 'test.txt'
-                                            // trên google drive trước đã
-                                            $fileinfo = collect($googleDriveStorage->listContents('1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH', false));
-                                            
-                                            // Đọc nội dung file 'test.txt' mà mình đã tạo ở trên
-                                            //$fileinfo = $googleDriveStorage->get($fileinfo['path']);
-                                            
-                                            
+	    
 
- 
-dd($fileinfo);*/
+    $dir = '1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH';
+    $recursive = false; // Get subdirectories also?
+    $contents = collect(Storage::disk('google_drive')->listContents($dir, $recursive));
 
 
                                             ?>
                                             
                                             @foreach($imagesGallery as $image)
-                                            
+                                            <?php 
+                                             $filename = 'JwQ0ECxsTt6lEWbWW34d.jpg';
+                                            $file = $contents
+                                                ->where('type', '=', 'file')
+                                                ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+                                                ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+                                                ->first(); // there can be duplicate file names!
+                                                ?>
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>
-                                                    <img src="{{ $image -> name }}" class="image_product_100_100">
+                                                    <img src="<?php echo Storage::disk('google_drive')->url($file['path']);?>" class="image_product_100_100">
                                                 </td>
                                                 <td>
                                                     <a href="" data-url="{{ route('image-gallery.delete',['id' => $image -> id]) }}" data-toggle="tooltip" data-original-title="Delete" class="sa-warning"> <i class="fa fa-close text-danger"></i> </a>
