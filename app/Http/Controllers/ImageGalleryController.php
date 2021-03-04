@@ -29,29 +29,11 @@ class ImageGalleryController extends Controller
     public function add($product_id)
     {
     	
-	   /* $dir = '1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH';
-    $recursive = false; // Get subdirectories also?
-    $contents = collect(Storage::disk('google_drive')->listContents($dir, $recursive));*/
+	 
 	    
-	    $filename = 'JwQ0ECxsTt6lEWbWW34d.jpg';
 
-    $dir = '1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH';
-    $recursive = false; // Get subdirectories also?
-    $contents = collect(Storage::disk('google_drive')->listContents($dir, $recursive));
 
-    $file = $contents
-        ->where('type', '=', 'file')
-        ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
-        ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
-        ->first(); // there can be duplicate file names!
-
-    //return $file; // array with file info
-
-     $readStream = Storage::disk('google_drive')->getDriver()->readStream($file['path']);
-echo "<img src = '".Storage::disk('google_drive')->url($file['path'])."' />";die('test');
-
-    //return $contents->where('type', '=', 'dir'); // directories
-    //return $contents->where('type', '=', 'file'); // files
+   
 	    $product = $this -> product -> findOrFail($product_id);
     	$imagesGallery = $this -> product_images -> where('product_id',$product_id) -> get();
 	    
