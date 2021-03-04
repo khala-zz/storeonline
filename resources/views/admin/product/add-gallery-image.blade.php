@@ -66,12 +66,12 @@ $googleDriveStorage = Storage::disk('google_drive');
                                             $fileinfo = collect($googleDriveStorage->listContents('1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH', false));
                                             
                                             // Đọc nội dung file 'test.txt' mà mình đã tạo ở trên
-                                            $contents = $googleDriveStorage->get($fileinfo['path']);
+                                            //$fileinfo = $googleDriveStorage->get($fileinfo['path']);
                                             
                                             
 
  
-dd($contents);
+dd($fileinfo);
 
                                             ?>
                                             <img src="<?php echo $contents; ?>" class="image_product_100_100">
