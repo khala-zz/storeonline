@@ -47,12 +47,14 @@ class ImageGalleryController extends Controller
 
     //return $file; // array with file info
 
-    $rawData = Storage::disk('google_drive')->get($file['path']);
+     $readStream = Storage::disk('google_drive')->getDriver()->readStream($file['path']);
 
-    return response($rawData, 200)
-        ->header('ContentType', $file['mimetype'])
-        ->header('Content-Disposition', "attachment; filename='$filename'");
-
+    return response()->stream(function () use ($readStream) {
+        fpassthru($readStream);
+    }, 200, [
+        'Content-Type' => $file['mimetype'],
+        //'Content-disposition' => 'attachment; filename="'.$filename.'"', // force download?
+    ]);
     //return $contents->where('type', '=', 'dir'); // directories
     //return $contents->where('type', '=', 'file'); // files
 	    $product = $this -> product -> findOrFail($product_id);
