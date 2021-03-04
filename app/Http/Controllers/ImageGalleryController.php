@@ -33,7 +33,7 @@ class ImageGalleryController extends Controller
     $recursive = false; // Get subdirectories also?
     $contents = collect(Storage::disk('google_drive')->listContents($dir, $recursive));*/
 	    
-	    $filename = 'JwQ0ECxsTt6lEWbWW34d';
+	    $filename = 'JwQ0ECxsTt6lEWbWW34d.jpg';
 
     $dir = '1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH';
     $recursive = false; // Get subdirectories also?
