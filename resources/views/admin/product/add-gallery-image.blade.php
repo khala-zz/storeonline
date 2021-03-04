@@ -70,7 +70,8 @@ use Illuminate\Support\Facades\Storage;
                                             
                                             @foreach($imagesGallery as $image)
                                             <?php 
-                                             $filename = 'JwQ0ECxsTt6lEWbWW34d.jpg';
+                                            // $filename = 'JwQ0ECxsTt6lEWbWW34d.jpg';
+					    $filename = $image -> name;
                                             $file = $contents
                                                 ->where('type', '=', 'file')
                                                 ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
