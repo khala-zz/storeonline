@@ -73,12 +73,13 @@ $googleDriveStorage = Storage::disk('google_drive');
  
 
                                             ?>
+                                            <img src="<?php echo $contents; ?>" class="image_product_100_100">
                                             @foreach($imagesGallery as $image)
                                             
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>
-                                                    <img src="<?php echo $contents; ?>" class="image_product_100_100">
+                                                    <img src="{{ $image -> name }}" class="image_product_100_100">
                                                 </td>
                                                 <td>
                                                     <a href="" data-url="{{ route('image-gallery.delete',['id' => $image -> id]) }}" data-toggle="tooltip" data-original-title="Delete" class="sa-warning"> <i class="fa fa-close text-danger"></i> </a>
