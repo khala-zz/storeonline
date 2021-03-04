@@ -30,7 +30,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{ asset(eshopper/images/home/logo.png) }} alt="logo" /></a>
+							<a href="index.html"><img src="{{ asset('eshopper/images/home/logo.png') }} alt="logo" /></a>
 						</div>
 						
 					</div>
