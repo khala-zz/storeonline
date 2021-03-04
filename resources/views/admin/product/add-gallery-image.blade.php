@@ -75,7 +75,7 @@ dd($fileinfo);*/
 
 
                                             ?>
-                                            <img src="<?php echo $contents; ?>" class="image_product_100_100">
+                                            
                                             @foreach($imagesGallery as $image)
                                             
                                             <tr>
