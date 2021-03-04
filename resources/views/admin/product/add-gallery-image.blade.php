@@ -63,14 +63,15 @@ $googleDriveStorage = Storage::disk('google_drive');
  
                                             // Trước tiên cần lấy ra thông tin của file 'test.txt'
                                             // trên google drive trước đã
-                                            $fileinfo = collect($googleDriveStorage->listContents('1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH', false))
-                                                ->where('type', 'file')
-                                                ->where('name', 'JwQ0ECxsTt6lEWbWW34d.jpg')
-                                                ->first();
+                                            $fileinfo = collect($googleDriveStorage->listContents('1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH', false));
+                                            
                                             // Đọc nội dung file 'test.txt' mà mình đã tạo ở trên
                                             $contents = $googleDriveStorage->get($fileinfo['path']);
                                             
+                                            
+
  
+dd($contents);
 
                                             ?>
                                             <img src="<?php echo $contents; ?>" class="image_product_100_100">
