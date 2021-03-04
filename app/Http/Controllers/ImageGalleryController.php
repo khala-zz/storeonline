@@ -51,7 +51,7 @@ class ImageGalleryController extends Controller
 
     return response($rawData, 200)
         ->header('ContentType', $file['mimetype'])
-        ->header('Content-Disposition', "attachment; filename='$filename'")
+        ->header('Content-Disposition', "attachment; filename='$filename'");
 
     //return $contents->where('type', '=', 'dir'); // directories
     //return $contents->where('type', '=', 'file'); // files
