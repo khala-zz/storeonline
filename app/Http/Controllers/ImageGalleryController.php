@@ -10,6 +10,7 @@ use App\Traits\StorageImageTrait;
 
 use App\Models\Product;
 use App\Models\ProductImage;
+use Illuminate\Support\Facades\Storage;
 
 class ImageGalleryController extends Controller
 {
