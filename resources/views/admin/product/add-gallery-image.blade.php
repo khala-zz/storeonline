@@ -59,7 +59,7 @@
  
 use Illuminate\Support\Facades\Storage;
  
-$googleDriveStorage = Storage::disk('google_drive');
+/*$googleDriveStorage = Storage::disk('google_drive');
  
                                             // Trước tiên cần lấy ra thông tin của file 'test.txt'
                                             // trên google drive trước đã
@@ -71,7 +71,18 @@ $googleDriveStorage = Storage::disk('google_drive');
                                             
 
  
-dd($fileinfo);
+dd($fileinfo);*/
+$driveService = Storage::disk('google_drive');
+$folderId = '1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH';
+        $query = "'" . $folderId . "' in parents and trashed=false";
+
+        $optParams = [
+            'fields' => 'nextPageToken, files(id, name)',
+            'q' => $query
+        ];
+
+        $results = $driveService->files->listFiles($optParams);
+        dd($results);
 
                                             ?>
                                             <img src="<?php echo $contents; ?>" class="image_product_100_100">
