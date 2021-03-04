@@ -48,7 +48,7 @@ class ImageGalleryController extends Controller
     //return $file; // array with file info
 
      $readStream = Storage::disk('google_drive')->getDriver()->readStream($file['path']);
-echo "<img src = '".Storage::disk('google_drive')->url($file['path'])."'>";die('test);
+echo "<img src = '".Storage::disk('google_drive')->url($file['path'])."' />";die('test');
 
     //return $contents->where('type', '=', 'dir'); // directories
     //return $contents->where('type', '=', 'file'); // files
