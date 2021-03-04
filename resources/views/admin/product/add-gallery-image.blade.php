@@ -69,7 +69,7 @@ $googleDriveStorage = Storage::disk('google_drive');
                                             // trên google drive trước đã
                                             $fileinfo = collect($googleDriveStorage->listContents('1Q7gpPodh56tCp1cY4mJ35F-mL7mW5ozH', false))
                                                 ->where('type', 'file')
-                                                ->where('name', $image -> name)
+                                                ->where('name', 'JwQ0ECxsTt6lEWbWW34d.jpg')
                                                 ->first();
 
                                             // Đọc nội dung file 'test.txt' mà mình đã tạo ở trên
