@@ -53,6 +53,8 @@ Route::get('/logout',[UserController::class,'logout']) -> name('user.logout');
 
 ///// Cart Area /////////
 Route::post('/addToCart',[CartController::class,'addToCart'])->name('addToCart');
+//add to cart ajax
+Route::get('/addToCart',[CartController::class,'addToCart'])->name('addToCart');
 Route::get('/view-cart',[CartController::class,'index']) -> name('cart.view');
 Route::get('/update-cart/{id}/{quantity}',[CartController::class,'updateQuantity']) -> name('cart.update');
 Route::get('/delete-cart-item/{id}',[CartController::class,'deleteItem']) -> name('cart.delete');
