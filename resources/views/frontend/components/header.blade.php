@@ -49,8 +49,9 @@
                                 </li>
                             @else
                                 <li><a href="{{ route('user.login') }}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+				<li><a href="{{ route('user.login') }}"><i class="fa fa-lock"></i> Đăng Ki</a></li>
                             @endif
-			    <li><a href="{{ route('user.login') }}"><i class="fa fa-lock"></i> Đăng Ki</a></li>
+			    
 
 
 								
