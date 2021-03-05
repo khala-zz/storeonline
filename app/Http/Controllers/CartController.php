@@ -77,18 +77,64 @@ class CartController extends Controller
     //add to cart button ajax
     public function addToCartAjax(Request $request)
     {
-    	$id = $request -> note_order_id;
-    	$note = $request -> note;
-    	try 
+    	$inputToCart = [];
+        $inputToCart['product_id'] = $request -> product_id;
+    	$inputToCart['size']  = $request -> size;
+        $inputToCart['price'] = $request -> price;
+        $inputToCart['quantity'] = 1;
+        Session::forget('discount_amount_price');
+        Session::forget('coupon_code');
+        
+        try 
         {
 
-           $this -> order -> find($id) ->update([
-           	'note' => $note
-           	
-           ]);
+           if($inputToCart['size']==""){
+            return back()->with('message','Please select Size');
+            }
+            else{
+                    $stockAvailable=DB::table('product_attributes')->select('stock','sku')->where(['product_id'=>$inputToCart['product_id'],
+                        'price'=>$inputToCart['price']])->first();
+                   //dd($inputToCart['size']);
+                    //kiem tra neu trong kho het hang hay khong?
+                    if($stockAvailable -> stock >=  $inputToCart['quantity']){
+                        $inputToCart['user_email']='weshare@gmail.com';
+                        $session_id=Session::get('session_id');
+
+                        if(empty($session_id)){
+                            $session_id=Str::random(40);
+                            Session::put('session_id',$session_id);
+                        }
+
+                        $inputToCart['session_id']=$session_id;
+
+                        $sizeAtrr=explode("-",$inputToCart['size']);
+                        $inputToCart['size']=$sizeAtrr[1];
+                        $inputToCart['product_code']=$stockAvailable->sku;
+                        //khong che chay tren host heroku
+                        $inputToCart['product_color']='red';
+                        //kiem tra trong gio hang co mua chua?
+                        $count_duplicateItems=Cart::where(['product_id'=>$inputToCart['product_id'],
+                            'product_color'=>$inputToCart['product_color'],
+                            'size'=>$inputToCart['size']])->count();
+                        if($count_duplicateItems>0){
+                            return back()->with('message','sản phẩm thêm vào giỏ hàng thành công');
+                        }else{
+                            Cart::create($inputToCart);
+                           //gan session de hien thi so luong san pham ra ben ngoai gio hang
+                            $sessionCountItemCart = Cart::all() -> count();
+                            $request->session()->put('count_item_cart', $sessionCountItemCart);
+
+                            $response = 'Sản phẩm đã được thêm vào gio hang';
+                        }
+                    }
+                    else
+                    {
+                        $response = 'Het hang!';
+                    }
+                }
            return response() -> json([
              'code' => 200,
-             'message' => 'success'
+             'message' => $response
             ],200);
 
     	}
