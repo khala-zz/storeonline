@@ -74,6 +74,35 @@ class CartController extends Controller
             }
         }
     }
+    //add to cart button ajax
+    public function addToCartAjax(Request $request)
+    {
+    	$id = $request -> note_order_id;
+    	$note = $request -> note;
+    	try 
+        {
+
+           $this -> order -> find($id) ->update([
+           	'note' => $note
+           	
+           ]);
+           return response() -> json([
+             'code' => 200,
+             'message' => 'success'
+            ],200);
+
+    	}
+    	catch(\Exception $exception){
+    		
+    		Log::error('Message:'. $exception -> getMessage(). 'Line:'.$exception -> getLine());
+    		return response() -> json([
+    			'code' => 500,
+    			'message' => 'fail'
+    		],500);
+
+    	}
+        //return back()->with('message','Update Attribute Successed');
+    }
     
     public function deleteItem($id=null){
     	
