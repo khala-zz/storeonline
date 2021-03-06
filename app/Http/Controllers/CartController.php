@@ -113,12 +113,7 @@ class CartController extends Controller
                         //khong che chay tren host heroku
                         $inputToCart['product_color']='red';
                         //kiem tra trong gio hang co mua chua?
-                        $count_duplicateItems=Cart::where(['product_id'=>$inputToCart['product_id'],
-                            'product_color'=>$inputToCart['product_color'],
-                            'size'=>$inputToCart['size']])->count();
-                        if($count_duplicateItems>0){
-                            return back()->with('message','sản phẩm thêm vào giỏ hàng thành công');
-                        }else{
+                        
                             
                             Cart::create($inputToCart);
                            //gan session de hien thi so luong san pham ra ben ngoai gio hang
@@ -126,7 +121,7 @@ class CartController extends Controller
                             $request->session()->put('count_item_cart', $sessionCountItemCart);
 
                             $response = 'Sản phẩm đã được thêm vào gio hang';
-                        }
+                       
                     }
                     else
                     {
