@@ -79,9 +79,9 @@ class CartController extends Controller
     //add to cart button ajax
     public function addToCartAjax(Request $request)
     {
-    	$inputToCart[] = [];
+    	$inputToCart = [];
         $inputToCart['product_id'] = $request -> product_id;
-    	$inputToCart['size']  = $request -> size;
+    	$inputToCart['name']  = $request -> product_name;
         $inputToCart['price'] = $request -> price;
         $inputToCart['size'] = $request -> size;
         $inputToCart['quantity'] = 1;
