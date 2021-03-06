@@ -9,10 +9,10 @@
     // get du lieu
      let dataId = $(this).data('id');
  	 	 let product_id = $("#product_id_"+dataId).val();
-    	let product_name = $("#product_name").val();
-    	let product_masp = $("#product_masp").val();
-    	let product_color = $("#product_color").val();
-    	let product_price = $("#product_price").val();
+    	let product_name = $("#product_name_"+dataId).val();
+    	let product_masp = $("#product_masp_"+dataId).val();
+    	let product_color = $("#product_color_"+dataId).val();
+    	let product_price = $("#product_price_"+dataId).val();
     
     alert(product_id);
  	 
