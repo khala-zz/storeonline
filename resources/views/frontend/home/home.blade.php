@@ -9,6 +9,7 @@
 
 	@section('js')
 		<script src=" {{ asset('home/home.js') }} "></script>
+		<script src="{{ asset('frontend/js/addToCart/main.js') }}"></script>
 	@endsection
 
 	@section('content')
