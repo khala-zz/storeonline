@@ -60,7 +60,7 @@ class CartController extends Controller
                 if($count_duplicateItems>0){
                     return back()->with('message','sản phẩm thêm vào giỏ hàng thành công');
                 }else{
-                   die($inputToCart);
+                   
                     Cart::create($inputToCart);
                    //gan session de hien thi so luong san pham ra ben ngoai gio hang
                     $sessionCountItemCart = Cart::all() -> count();
@@ -120,6 +120,7 @@ class CartController extends Controller
                         if($count_duplicateItems>0){
                             return back()->with('message','sản phẩm thêm vào giỏ hàng thành công');
                         }else{
+                            die($inputToCart);
                             Cart::create($inputToCart);
                            //gan session de hien thi so luong san pham ra ben ngoai gio hang
                             $sessionCountItemCart = Cart::all() -> count();
