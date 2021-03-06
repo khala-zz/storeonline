@@ -84,6 +84,7 @@ class CartController extends Controller
         $inputToCart['price'] = $request -> price;
         $inputToCart['size'] = $request -> size;
         $inputToCart['quantity'] = 1;
+        dd($inputToCart);
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
       
