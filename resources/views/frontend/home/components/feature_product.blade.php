@@ -18,7 +18,16 @@
 						
 						<h2>{{ $product -> price }} VND</h2>
 						<p><a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}">{{ $product -> name }}</a></p>
-						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+						<!-- form xu ly add to cart --->
+						<form action="{{route('addToCart')}}" method="post" role="form">
+								
+								<input type="hidden" name="product_id" value="{{$product->id}}">
+								<input type="hidden" name="product_name" value="{{$product->name}}">
+								<input type="hidden" name="product_code" value="{{$product->ma_sp}}">
+								<input type="hidden" name="product_color" value="{{$product->p_color}}">
+								<input type="hidden" name="price" value="{{$product->price}}" >
+						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart add-to-cart-ajax"></i>Add to cart</a>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -35,3 +44,7 @@
 </div>
 
 </div>
+@section('js')
+    <script src="{{asset('frontend/js/addToCart/main.js')}}"></script>
+    
+@endsection
