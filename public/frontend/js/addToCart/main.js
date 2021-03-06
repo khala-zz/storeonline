@@ -1,6 +1,6 @@
  $(function(){
  	//xu lý add to cart ajax
- alert('test');
+
  	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
  	 //xu ly ajax để cap nhat dữ liệu note order
  	 $(document).on("click", ".add-to-cart-ajax" , function(e) {
