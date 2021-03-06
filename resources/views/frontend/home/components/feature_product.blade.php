@@ -26,6 +26,7 @@
 								<input type="hidden" name="product_code" value="{{$product->ma_sp}}" id="product_masp_{{ $product->id }}">
 								<input type="hidden" name="product_color" value="{{$product->p_color}}" id="product_color_{{ $product->id }}">
 								<input type="hidden" name="price" value="{{$product->price}}" id="product_price_{{ $product->id }}">
+								<input type="hidden" name="size" value="L" id="product_size_{{ $product->id }}">
 						<a href="#" class="btn btn-default add-to-cart add-to-cart-ajax" data-id = "{{ $product->id }}"><i class="fa fa-shopping-cart "></i>Add to cart</a>
 						</form>
 					</div>
