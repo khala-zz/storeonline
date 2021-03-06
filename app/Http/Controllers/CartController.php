@@ -92,11 +92,8 @@ class CartController extends Controller
         {
 
           
-                    $stockAvailable=DB::table('product_attributes')->select('stock','sku')->where(['product_id'=>$inputToCart['product_id'],
-                        'price'=>$inputToCart['price']])->first();
-                   //dd($inputToCart['size']);
-                    //kiem tra neu trong kho het hang hay khong?
-                    if($stockAvailable -> stock >=  $inputToCart['quantity']){
+                  
+                   
                         $inputToCart['user_email']='weshare@gmail.com';
                         $session_id=Session::get('session_id');
 
@@ -122,11 +119,7 @@ class CartController extends Controller
 
                             $response = 'Sản phẩm đã được thêm vào gio hang';
                        
-                    }
-                    else
-                    {
-                        $response = 'Het hang!';
-                    }
+                  
                
            return response() -> json([
              'code' => 200,
