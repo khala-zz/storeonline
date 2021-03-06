@@ -14,7 +14,7 @@
     	let product_color = $("#product_color").val();
     	let product_price = $("#product_price").val();
     
-    alert(product_id);
+    alert(product_name);
  	 
  	 	
  	 	if(product_id != '' ){
