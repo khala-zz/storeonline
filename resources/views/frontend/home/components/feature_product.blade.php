@@ -11,7 +11,7 @@
 					--}}
 					<h2>{{ $product -> price }} VND</h2>
 					<p><a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}">{{ $product -> name }}</a></p>
-					<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+					<a href="#" class="btn btn-default add-to-cart add-to-cart-ajax"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 				</div>
 				<div class="product-overlay">
 					<div class="overlay-content">
@@ -26,7 +26,7 @@
 								<input type="hidden" name="product_code" value="{{$product->ma_sp}}" id="product_masp">
 								<input type="hidden" name="product_color" value="{{$product->p_color}}" id="product_color">
 								<input type="hidden" name="price" value="{{$product->price}}" id="product_price">
-						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart add-to-cart-ajax"></i>Add to cart</a>
+						<a href="#" class="btn btn-default add-to-cart add-to-cart-ajax"><i class="fa fa-shopping-cart "></i>Add to cart</a>
 						</form>
 					</div>
 				</div>
