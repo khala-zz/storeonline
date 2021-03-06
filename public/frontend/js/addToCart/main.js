@@ -23,7 +23,7 @@
  	 			type: 'get',
  	 			data: {_token: CSRF_TOKEN,product_id: product_id,product_name: product_name,product_masp: product_masp,product_color: product_color,product_price: product_price},
  	 			success: function(response){
- 	 				alert('them vao gio hang thành công');
+ 	 				alert(response);
  	 			}
 
  	 		});
