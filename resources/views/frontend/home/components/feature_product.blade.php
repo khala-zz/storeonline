@@ -19,7 +19,7 @@
 						<h2>{{ $product -> price }} VND</h2>
 						<p><a href="{{ route('product.detail',['slug' => $product -> slug,'id' => $product -> id])}}">{{ $product -> name }}</a></p>
 						<!-- form xu ly add to cart --->
-						<form action="{{route('addToCart')}}" method="post" role="form">
+						<form action="{{route('addToCartAjax')}}" method="post" role="form">
 								
 								<input type="hidden" name="product_id" value="{{$product->id}}">
 								<input type="hidden" name="product_name" value="{{$product->name}}">
