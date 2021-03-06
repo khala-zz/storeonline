@@ -78,23 +78,20 @@ class CartController extends Controller
     //add to cart button ajax
     public function addToCartAjax(Request $request)
     {
-    	$inputToCart = [];
+    	$inputToCart[] = [];
         $inputToCart['product_id'] = $request -> product_id;
     	$inputToCart['size']  = $request -> size;
         $inputToCart['price'] = $request -> price;
         $inputToCart['size'] = $request -> size;
         $inputToCart['quantity'] = 1;
-        dd('test');
+       
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
       
         try 
         {
 
-           if($inputToCart['size']==""){
-            return back()->with('message','Please select Size');
-            }
-            else{
+          
                     $stockAvailable=DB::table('product_attributes')->select('stock','sku')->where(['product_id'=>$inputToCart['product_id'],
                         'price'=>$inputToCart['price']])->first();
                    //dd($inputToCart['size']);
@@ -135,7 +132,7 @@ class CartController extends Controller
                     {
                         $response = 'Het hang!';
                     }
-                }
+               
            return response() -> json([
              'code' => 200,
              'message' => $response
