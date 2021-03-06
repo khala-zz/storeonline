@@ -7,14 +7,14 @@
  	 	e.preventDefault();
  	 
     // get du lieu
-  
- 	 	 let product_id = $("#product_id").val();
+     let dataId = $(this).data('id');
+ 	 	 let product_id = $("#product_id_"+dataId).val();
     	let product_name = $("#product_name").val();
     	let product_masp = $("#product_masp").val();
     	let product_color = $("#product_color").val();
     	let product_price = $("#product_price").val();
     
-    alert(product_name);
+    alert(product_id);
  	 
  	 	
  	 	if(product_id != '' ){
