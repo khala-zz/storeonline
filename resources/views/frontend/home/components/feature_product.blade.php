@@ -44,7 +44,4 @@
 </div>
 
 </div>
-@section('js')
-    <script src="{{asset('frontend/js/addToCart/main.js')}}"></script>
-    
-@endsection
+
