@@ -85,7 +85,7 @@ class CartController extends Controller
         $inputToCart['quantity'] = 1;
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        
+        die($inputToCart);
         try 
         {
 
@@ -120,7 +120,7 @@ class CartController extends Controller
                         if($count_duplicateItems>0){
                             return back()->with('message','sản phẩm thêm vào giỏ hàng thành công');
                         }else{
-                            die($inputToCart);
+                            
                             Cart::create($inputToCart);
                            //gan session de hien thi so luong san pham ra ben ngoai gio hang
                             $sessionCountItemCart = Cart::all() -> count();
@@ -136,7 +136,7 @@ class CartController extends Controller
                 }
            return response() -> json([
              'code' => 200,
-             'message' => 'test'
+             'message' => 'thanh cong'
             ],200);
 
     	}
