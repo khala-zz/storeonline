@@ -82,10 +82,11 @@ class CartController extends Controller
         $inputToCart['product_id'] = $request -> product_id;
     	$inputToCart['size']  = $request -> size;
         $inputToCart['price'] = $request -> price;
+        $inputToCart['size'] = $request -> size;
         $inputToCart['quantity'] = 1;
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        die($inputToCart);
+      
         try 
         {
 
@@ -136,7 +137,7 @@ class CartController extends Controller
                 }
            return response() -> json([
              'code' => 200,
-             'message' => 'thanh cong'
+             'message' => $response
             ],200);
 
     	}
