@@ -98,6 +98,7 @@ class CartController extends Controller
                    
                         $inputToCart['user_email']='weshare@gmail.com';
                         $session_id=Session::get('session_id');
+            dd($inputToCart);
 
                         if(empty($session_id)){
                             $session_id=Str::random(40);
