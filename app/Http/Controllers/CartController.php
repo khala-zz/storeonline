@@ -83,7 +83,8 @@ class CartController extends Controller
         $inputToCart['product_id'] = $request -> product_id;
     	$inputToCart['name']  = $request -> product_name;
         $inputToCart['price'] = $request -> product_price;
-        $inputToCart['size'] = $request -> product_size;
+        //$inputToCart['size'] = $request -> product_size;
+        $inputToCart['size'] = 'L';
         $inputToCart['quantity'] = 1;
         //dd($inputToCart);
        
@@ -98,7 +99,7 @@ class CartController extends Controller
                    
                         $inputToCart['user_email']='weshare@gmail.com';
                         $session_id=Session::get('session_id');
-            dd($inputToCart);
+            
 
                         if(empty($session_id)){
                             $session_id=Str::random(40);
@@ -109,6 +110,7 @@ class CartController extends Controller
 
                         $sizeAtrr=explode("-",$inputToCart['size']);
                         $inputToCart['size']=$sizeAtrr[1];
+                        dd($inputToCart);
                         //$inputToCart['product_code']=$stockAvailable->sku;
                         //khong che chay tren host heroku
                         $inputToCart['product_color']='red';
