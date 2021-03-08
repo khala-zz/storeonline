@@ -110,7 +110,7 @@ class CartController extends Controller
 
                         $sizeAtrr=explode("-",$inputToCart['size']);
                         $inputToCart['size']=$sizeAtrr[1];
-                        dd($inputToCart);
+                        
                         //$inputToCart['product_code']=$stockAvailable->sku;
                         //khong che chay tren host heroku
                         $inputToCart['product_color']='red';
@@ -123,7 +123,7 @@ class CartController extends Controller
                             $request->session()->put('count_item_cart', $sessionCountItemCart);
 
                             $response = 'Sản phẩm đã được thêm vào gio hang';
-                       
+                       dd($inputToCart.$sessionCountItemCart);
                   
                
            return response() -> json([
