@@ -22,7 +22,7 @@
  	 		$.ajax({
  	 			url: '/addToCartAjax',
  	 			type: 'get',
- 	 			data: {_token: CSRF_TOKEN,product_id: product_id,product_name: product_name,product_masp: product_masp,product_color: product_color,product_price: product_price,product_size: product_size},
+ 	 			data: {_token: CSRF_TOKEN,product_id: product_id,product_name: product_name,product_code: product_masp,product_color: product_color,product_price: product_price,product_size: product_size},
  	 			success: function(response){
  	 				alert('test resopne');
  	 			}
