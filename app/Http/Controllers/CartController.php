@@ -116,7 +116,7 @@ class CartController extends Controller
                         $inputToCart['product_color']='red';
                         //kiem tra trong gio hang co mua chua?
                         
-                            
+                            dd($inputToCart);
                             Cart::create($inputToCart);
              
                            //gan session de hien thi so luong san pham ra ben ngoai gio hang
