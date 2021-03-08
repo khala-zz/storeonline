@@ -16,6 +16,7 @@
     let product_size = $("#product_size_"+dataId).val();
     
     alert(product_id);
+    alert(product_masp);
  	 
  	 	
  	 	if(product_id != '' ){
