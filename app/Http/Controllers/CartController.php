@@ -121,6 +121,7 @@ class CartController extends Controller
              
                            //gan session de hien thi so luong san pham ra ben ngoai gio hang
                             $sessionCountItemCart = Cart::all() -> count();
+            dd($sessionCountItemCart);
                             $request->session()->put('count_item_cart', $sessionCountItemCart);
 
                             $response = 'Sản phẩm đã được thêm vào gio hang';
