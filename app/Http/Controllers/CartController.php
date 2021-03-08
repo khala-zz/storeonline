@@ -83,7 +83,7 @@ class CartController extends Controller
         $inputToCart['product_id'] = $request -> product_id;
     	$inputToCart['product_name']  = $request -> product_name;
         $inputToCart['price'] = $request -> product_price;
-        $inputToCart['product_code'] = $request -> product_masp;
+        $inputToCart['product_code'] = $request -> product_code;
         $inputToCart['size'] = '27-L';
         $inputToCart['quantity'] = 1;
         //dd($inputToCart);
