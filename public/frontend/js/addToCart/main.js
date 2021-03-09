@@ -23,7 +23,7 @@
  	 			type: 'get',
  	 			data: {_token: CSRF_TOKEN,product_id: product_id,product_name: product_name,product_code: product_masp,product_color: product_color,product_price: product_price,product_size: product_size},
  	 			success: function(response){
- 	 				alert(response.message);
+ 	 				alert('them vao gio hang thanh cong');
  	 			}
 
  	 		});
