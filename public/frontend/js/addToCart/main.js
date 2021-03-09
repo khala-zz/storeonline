@@ -15,8 +15,6 @@
     	let product_price = $("#product_price_"+dataId).val();
     let product_size = $("#product_size_"+dataId).val();
     
-    alert(product_id);
-    alert(product_masp);
  	 
  	 	
  	 	if(product_id != '' ){
@@ -25,7 +23,7 @@
  	 			type: 'get',
  	 			data: {_token: CSRF_TOKEN,product_id: product_id,product_name: product_name,product_code: product_masp,product_color: product_color,product_price: product_price,product_size: product_size},
  	 			success: function(response){
- 	 				alert('test resopne');
+ 	 				alert(response.message);
  	 			}
 
  	 		});
