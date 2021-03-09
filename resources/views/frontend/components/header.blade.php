@@ -42,7 +42,7 @@
 								 
 								<li><a href="{{route('checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 
-								<li><a href="{{ route('cart.view')}}"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-pill badge-danger">{{  session('count_item_cart') }}</a></li>
+								<li><a href="{{ route('cart.view')}}"><i class="fa fa-shopping-cart"></i> Cart<span class="badge badge-pill badge-danger">{{  Session::get('count_item_cart') }}</a></li>
                             @if(Auth::check())
                                 <li><a href="{{ route('user.account')}}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
                                 <li><a href="{{ route('user.logout') }}"><i class="fa fa-lock"></i> Đăng xuất </a>
