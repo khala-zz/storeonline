@@ -131,7 +131,7 @@ class CartController extends Controller
                
            return response() -> json([
              'code' => 200,
-             'message' => $sessionCountItemCart
+             'message' => Session::get('count_item_cart')
             ],200);
 
     	}
